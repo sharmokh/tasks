@@ -1,0 +1,11 @@
+table td input[list="sex"]{width: 125px;}
+table td input[id="dob"]{width: 215px;}
+table td input[id="city"]{width: 148px;}
+table td input[id="state"]{width: 40px;}
+table td input[id="zipcode"]{width: 75px;}
+table td input[id="submit"] {float: right;}
+.verified {
+    width: 20px;
+    height: auto;
+    margin: 10px;
+}

@@ -1,0 +1,78 @@
+<head>
+    <link type="text/css" rel="stylesheet" href="/css/admin.css" />
+</head>
+
+{% extends "admin.html" %}
+{% block content %}
+
+<div class="wrapper">
+<form enctype="multipart/form-data" method="post">
+    <div class="col1">
+        <img class="tazk_photo" src="../img/NoPhoto.png" alt="Tazk Photo">
+        <div>Photo: <input type="file" id="photo" name="photo" accept="image/*"></div>
+    </div>
+    <div id="profile" class="col2">
+        <h2>New Tazk</h2>
+        <div>
+            <input list="category" name="category" value="{{category}}" placeholder="Category">
+            <datalist id="category"> 
+                <option value="General Handyman">General Handyman</option>
+                <option value="Plumbing">Plumbing</option>
+                <option value="Electrical">Electrical</option>
+                <option value="Heating & Cooling">Heating & Cooling</option>
+                <option value="Appliances">Appliances</option>
+                <option value="Yardwork">Yardwork</option>
+                <option value="Winter Services">Winter Services</option>
+                <option value="Car Services">Car Services</option>
+                <option value="Computer Services">Computer Services</option>
+                <option value="Errands">Errands</option>
+                <option value="Maid Services">Maid Services</option>
+                <option value="Moving Services">Moving Services</option>
+                <option value="Nanny Services">Nanny Services</option>
+            </datalist>
+        </div>
+        <div><input type="text" id="title" name="title"  value="{{title}}" placeholder="title"></div>
+        <textarea id="discription" name="discription" value="{{discription}}" placeholder="Please describe the service..."></textarea><br>
+        <input type="submit" id="submit" value=" New ">
+    </div>
+</form>
+</div>
+        
+        <script>
+            $(function(){
+                $('#title').on('input', function() {
+					var input=$(this);
+					var is_title=input.val();
+					if(is_title){input.removeClass("invalid").addClass("valid");}
+					else{input.removeClass("valid").addClass("invalid");}
+				});
+                $('#category').on('input', function() {
+                    var input=$(this);
+                    var cat = ["General Handyman", "Plumbing", "Electrical", "Heating & Cooling", 
+                        "Appliances", "Yardwork", "Winter Services", "Car Services", "Computer Services", 
+                        "Errands", "Maid Services", "Moving Services", "Nanny Services"];
+                        is_cat = $.inArray(input.val().toUpperCase(), cat);
+					if(is_cat!=-1){input.removeClass("invalid").addClass("valid");}
+					else{input.removeClass("valid").addClass("invalid");}
+				});
+                $("#profile").submit(function(){
+				    var form_data=$('#profile').serializeArray();
+                    var error_free=true;
+                    for (var input in form_data){
+					   var element=$('#'+form_data[input]['name']);
+					   var valid=element.hasClass("valid");
+                       var error_element=$("span", element.parent());
+					   if (!valid){error_element.removeClass("error").addClass("error_show"); error_free=false;}
+					   else{error_element.removeClass("error_show").addClass("error");}
+				    }
+				    if (!error_free){
+					   event.preventDefault(); 
+				    }
+				    else{
+                        document.getElementById("#profile").submit();
+				    }
+                });
+            });
+        </script>
+
+{% endblock %}

@@ -1,0 +1,9 @@
+Welcome {{first_name}},
+
+Thank you for joining TAZKS! Please confirm your email address by signing in and using the link and activation code below.
+
+http://handy-service.appspot.com/activate
+Activation Code: {{activate}}
+
+Thank you,
+TAZKS Support Team

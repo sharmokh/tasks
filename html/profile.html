@@ -1,0 +1,176 @@
+<head>
+    <link type="text/css" rel="stylesheet" href="/css/profile.css" />
+</head>
+
+{% extends "logged.html" %}
+{% block content %}
+
+        <div class="wrapper">
+            <form enctype="multipart/form-data" method="post">
+            <div class="col1">
+                <div>
+                    <img class="crop" src="/img?img_id={{user.key.urlsafe()}}" alt="Profile Picture">
+                </div>
+                <div>
+                        Photo: <input type="file" id="photo" name="photo" accept="image/*">
+                </div>
+                <div id="r2" class="rate_widget">
+                    Rating:
+                    <div class="star_1 ratings_stars"></div>
+                    <div class="star_2 ratings_stars"></div>
+                    <div class="star_3 ratings_stars"></div>
+                    <div class="star_4 ratings_stars"></div>
+                    <div class="star_5 ratings_stars"></div>
+                    <div class="total_votes">vote data</div>
+                </div>
+            </div>
+            <div id="profile" class="col2">
+                <h2>Your Profile</h2>
+                <table>
+                    <col width="125">
+                    <tr>
+                        <td>Full Name:</td>
+                        <td>
+                            <input type="text" id="first_name" name="first_name" value="{{user.first_name}}">
+                            <input type="text" id="last_name" name="last_name"  value="{{user.last_name}}">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Date of Birth:</td>
+                        <td>
+                            <input type="date" id="dob" name="dob" value="{{user.dob}}">
+                            I am 
+                            <input list="sex" name="sex" value="{{user.sex}}">
+                            <datalist id="sex"> 
+                                <option value="Male">Male</option>
+                                <option value="Female">Female</option>
+                            </datalist>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>ID Verified:</td>
+                        <td>
+                            <img class="hide verified" id="id_check" src="../img/verified.png" alt="ID Verified" align="middle">
+                            <input type="file" id="id" name="id" accept="image/*">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Cell Phone:</td>
+                        <td>
+                            <input type="tel" id="phone" name="phone" placeholder="xxx-xxx-xxxx" value="{{user.number}}">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Phone Verified:</td>
+                        <td>
+                            <img class="verified" src="../img/verified.png" alt="Phone Verified" align="middle">
+                            <input type="checkbox" name="enable_text" {% if user.enable_text == "on" %}checked{% endif %}>Enable Text Message Notifications
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Street Address:</td>
+                        <td>
+                            <input type="text" id="street" name="street" value="{{user.addresses[0].street}}">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>City:</td>
+                        <td>
+                            <input type="text" id="city" name="city" value="{{user.addresses[0].city}}">
+                            State:  <input type="text" id="state" name="state" value="{{user.addresses[0].state}}">
+                            Zip Code:  <input type="text" id="zipcode" name="zipcode" value="{{user.addresses[0].zipcode}}">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>
+                            <input type="submit" id="submit" value=" Update ">
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            </form>
+        </div>
+        
+        <script>
+            if ('{{id_verified}}' == 'True') {
+                document.getElementById("first_name").readOnly = "true";
+                document.getElementById("last_name").readOnly = "true";
+                document.getElementById("dob").readOnly = "true";
+                document.getElementById("sex").readOnly = "true";
+                $('#id_check').removeClass('hide');
+                $('#id').addClass('hide');
+            }
+            $(function(){
+                $('#first_name').on('input', function() {
+					var input=$(this);
+					var is_name=input.val();
+					if(is_name){input.removeClass("invalid").addClass("valid");}
+					else{input.removeClass("valid").addClass("invalid");}
+				});
+                $('#last_name').on('input', function() {
+					var input=$(this);
+					var is_name=input.val();
+					if(is_name){input.removeClass("invalid").addClass("valid");}
+					else{input.removeClass("valid").addClass("invalid");}
+				});
+                $('#phone').on('input', function() {
+					var input=$(this);
+					var re = /^\+?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/;
+					var is_phone=re.test(input.val());
+					if(is_phone){input.removeClass("invalid").addClass("valid");}
+					else{input.removeClass("valid").addClass("invalid");}
+				});
+                $('#street').on('input', function() {
+					var input=$(this);
+					var is_street=input.val();
+					if(is_street){input.removeClass("invalid").addClass("valid");}
+					else{input.removeClass("valid").addClass("invalid");}
+				});
+                $('#city').on('input', function() {
+					var input=$(this);
+					var is_city=input.val();
+					if(is_city){input.removeClass("invalid").addClass("valid");}
+					else{input.removeClass("valid").addClass("invalid");}
+				});
+                $('#state').on('input', function() {
+                    var input=$(this);
+                    var states = [
+                        "AL", "AK", "AZ", "AR", "CA", "CO", "CT", "DE", "FL", "GA",
+                        "HI", "ID", "IL", "IN", "IA", "KS", "KY", "LA", "ME", "MD",
+                        "MA", "MI", "MN", "MS", "MO", "MT", "NE", "NV", "NH", "NJ",
+                        "NM", "NY", "NC", "ND", "OH", "OK", "OR", "PA", "RI", "SC",
+                        "SD", "TN", "TX", "UT", "VT", "VA", "WA", "WV", "WI", "WY",
+                        "AS", "DC", "FM", "GU", "MH", "MP", "PR", "PW", "VI"];
+                        is_state = $.inArray(input.val().toUpperCase(), states);
+					if(is_state!=-1){input.removeClass("invalid").addClass("valid");}
+					else{input.removeClass("valid").addClass("invalid");}
+				});
+                $('#zipcode').on('input', function() {
+					var input=$(this);
+					var re = /^\+?([0-9]{5})$/;
+					var is_zip=re.test(input.val());
+					if(is_zip){input.removeClass("invalid").addClass("valid");}
+					else{input.removeClass("valid").addClass("invalid");}
+				});
+                $("#profile").submit(function(){
+				    var form_data=$('#profile').serializeArray();
+                    var error_free=true;
+                    for (var input in form_data){
+					   var element=$('#'+form_data[input]['name']);
+					   var valid=element.hasClass("valid");
+                       var error_element=$("span", element.parent());
+					   if (!valid){error_element.removeClass("error").addClass("error_show"); error_free=false;}
+					   else{error_element.removeClass("error_show").addClass("error");}
+				    }
+				    if (!error_free){
+					   event.preventDefault(); 
+				    }
+				    else{
+                        document.getElementById("#profile").submit();
+				    }
+                });
+            });
+        </script>
+
+{% endblock %}

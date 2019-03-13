@@ -1,0 +1,66 @@
+<head>
+    <link type="text/css" rel="stylesheet" href="/css/dashboard.css" />
+</head>
+
+{% extends base %}
+{% block content %}
+
+<div class="wrapper">
+    <div class="col1">
+        <img class="tazk_photo" src="/img?img_id={{tazk.key.urlsafe()}}" alt="Tazk Photo">
+        <h5>{{tazk.discription}}</h5>
+        <br><br>
+        <div><a href="#">Can you provide<br>this service?</a></div>
+    </div>
+    <div class="col2">
+        <h2>{{tazk.title}}</h2>
+        <div class="sort">
+            Sort by <select>
+                <option>Most Popular</option>
+                <option>Rating</option>            
+                <option>Price: Lowest to Highest</option>
+                <option>Price: Highest to Lowest</option>
+            </select>
+        </div>
+        <div class="row">
+            <img class="hm_photo" src="../img/NoPhoto.png">
+            <div class="handyman">
+                <h3>Don Manning</h3>
+                Rating: 5 Stars <br>
+                <img class="verified" id="id_check" src="../img/verified.png" alt="ID Verified"> ID Verified <br>
+                <img class="verified" id="background" src="../img/verified.png" alt="ID Verified"> Background Checked <br>
+                <img class="verified" id="lisenced" src="../img/verified.png" alt="ID Verified"> Lisenced <br>
+                <img class="verified" id="insured" src="../img/verified.png" alt="ID Verified"> Insured <br>
+            </div>
+            <div class="cost">
+                <h3>$50.00</h3>
+            </div>
+            <div class="message">
+                <br><h5>Su / Mo / Tu / We / Th / Fr / Sa</h5>
+                <textarea></textarea>
+                <input type="submit" id="book" value=" Book ">
+            </div>
+        </div>
+        <div class="row">
+            <img class="hm_photo" src="../img/NoPhoto.png">
+            <div class="handyman">
+                <h3>Jackie Robinson</h3>
+                Rating: 5 Stars <br>
+                <img class="verified" id="id_check" src="../img/verified.png" alt="ID Verified"> ID Verified <br>
+                <img class="verified" id="background" src="../img/verified.png" alt="ID Verified"> Background Checked <br>
+                <img class="verified" id="lisenced" src="../img/verified.png" alt="ID Verified"> Lisenced <br>
+                <img class="verified" id="insured" src="../img/verified.png" alt="ID Verified"> Insured <br>
+            </div>
+            <div class="cost">
+                <h3>$60.00</h3>
+            </div>
+            <div class="message">
+                <br><h5>Su / Mo / Tu / We / Th / Fr / Sa</h5>
+                <textarea></textarea>
+                <input type="submit" id="book" value=" Book ">
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

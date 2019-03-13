@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>TAZKS</title>      
+        <link type="text/css" rel="stylesheet" href="/css/base.css" />
+        <script src="/js/jquery.js" type="text/javascript" ></script>
+    </head>
+  
+    <body>
+        <div class="header">
+                <div id="logo" class="right">TAZKS</div>
+                <div class="menu">
+                    <a href="/id">Approve ID</a>
+                    <a href="/upload">Upload Data</a>
+                    <a href="/base">TAZKS</a>
+                    <a href="/account">Account</a>
+                    <a href="/logout">LogOut</a>
+                </div>
+        </div>
+        {% block content %}
+        {% endblock %}
+        <footer class="wrapper">
+            Copyright @TAZKS LLC
+        </footer>
+    </body>
+</html>

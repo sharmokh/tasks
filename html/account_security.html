@@ -1,0 +1,128 @@
+<head>
+        <link type="text/css" rel="stylesheet" href="/css/account.css" />
+</head>
+
+{% extends "logged.html" %}
+{% block content %}
+
+        <div class="wrapper">
+            <div class=col1>
+                <img class="crop" src="{{photo}}" alt="Profile Picture">
+                <div class="tab">
+                    <a href="/account">Receipts</a>
+                    <a href="/payment">Payment Methods</a>
+                    <a href="/payout">Payout Preferences</a>
+                    <a href="/security" class="active">Security</a>
+                </div>
+            </div>
+            <div class="col2">
+            <form id=update_email class="box" method=post>
+                <h2>Update Email</h2><hr>
+                <h4 class="error_show">{{message}}</h4><br>
+                <div>
+                    <input type="text" id="email" name="email" placeholder="Email" value="{{email}}">
+                </div>
+                <div>
+                    <input type="text" id="confirm" name="confirm" placeholder="Confirm Email">
+                    <br><span class="error">Looks like the email doesn't match.</span>
+                </div>
+                <div>
+                    <input type="submit" name="update_email" value="  Update Email  ">
+                </div>
+            </form>
+            <form id="change_password" class="box" method=post>
+                <h2>Change Password</h2><hr>
+                <h4 class="error_show">{{pw_message}}</h4><br>
+                <h3>Old Password</h3>
+                <div>
+                    <input type="password" id="old" name="old" placeholder="Old Password">
+                </div>
+                <h3>New Password</h3>
+                <div>
+                    <input type="password" id="password" name="password" placeholder="New Password">
+                    <br><span id="pw_req">6 character minimum, include at least 1 number and 1 letter</span>
+                </div>
+                <div>
+                    <input type="password" id="verify" name="verify" placeholder="Re-enter New Password">
+                    <br><span class="error">Hmmm, seems like your passwords don't match.</span>
+                </div>
+                <div>
+                    <input type="submit" name="change_password" value="  Change Password  ">
+                </div>
+            </form>
+            </div>
+        </div>
+        
+        <script>
+            $(function(){
+                $('#email').on('input', function() {
+					var input=$(this);
+					var re = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+					var is_email=re.test(input.val());
+					if(is_email){input.removeClass("invalid").addClass("valid");}
+					else{input.removeClass("valid").addClass("invalid");}
+				});
+                $('#confirm').on('input', function() {
+                    var input = $(this);
+                    var new_email = $('#email').val();
+                    if (input.val()==new_email) {input.removeClass("invalid").addClass("valid");}
+                    else {input.removeClass("valid").addClass("invalid");}
+                });
+                $('#old').on('input', function() {
+					var input=$(this);
+                    var pw = /^(?=.*\d)(?=.*[a-z]).{6,20}$/;     
+					var is_password=pw.test(input.val());
+					if(is_password){input.removeClass("invalid").addClass("valid");}
+					else{input.removeClass("valid").addClass("invalid");}
+				});
+                $('#password').on('input', function() {
+					var input=$(this);
+                    var pw = /^(?=.*\d)(?=.*[a-z]).{6,20}$/;     
+					var is_password=pw.test(input.val());
+					if(is_password){input.removeClass("invalid").addClass("valid");}
+					else{input.removeClass("valid").addClass("invalid");}
+				});
+                $('#verify').on('input', function() {
+					var input=$(this);
+					var pwd = $('#password').val();
+					if(input.val()==pwd){input.removeClass("invalid").addClass("valid");}
+					else{input.removeClass("valid").addClass("invalid");}
+				});
+                $("#update_email").submit(function(){
+				    var form_data=$('#update_email').serializeArray();
+                    var error_free=true;
+                    for (var input in form_data){
+					   var element=$('#'+form_data[input]['name']);
+					   var valid=element.hasClass("valid");
+                       var error_element=$("span", element.parent());
+					   if (!valid){error_element.removeClass("error").addClass("error_show"); error_free=false;}
+					   else{error_element.removeClass("error_show").addClass("error");}
+				    }
+				    if (!error_free){
+					   event.preventDefault(); 
+				    }
+				    else{
+                        document.getElementById("#update_email").submit();
+				    }
+                });
+                $("#change_password").submit(function(){
+				    var form_data=$('#change_password').serializeArray();
+                    var error_free=true;
+                    for (var input in form_data){
+					   var element=$('#'+form_data[input]['name']);
+					   var valid=element.hasClass("valid");
+                       var error_element=$("span", element.parent());
+					   if (!valid){error_element.removeClass("error").addClass("error_show"); error_free=false;}
+					   else{error_element.removeClass("error_show").addClass("error");}
+				    }
+				    if (!error_free){
+					   event.preventDefault(); 
+				    }
+				    else{
+                        document.getElementById("#change_password").submit();
+				    }
+                });
+            });
+        </script>
+
+{% endblock %}

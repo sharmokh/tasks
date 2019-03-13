@@ -1,0 +1,72 @@
+#login {float: right; width: 375px;}
+#login input[type="text"] {
+    font-size: 12px;
+    width: 150px;
+    margin: 3px;
+}
+#login input[type="password"] {
+    font-size: 12px;
+    width: 100px;
+    margin: 3px;
+}
+#login input[type="submit"] {
+    background-color: #ffce74;
+    border: 1px solid white;
+    font-size: 12px;
+    margin: 3px;
+    float: none;
+}
+#login input[type="submit"]:hover {background-color: orange;}
+h2 {text-align: left;}
+#signup {margin: 100px;}
+#pw_req {
+    color: gray;
+    font-size: 9px;
+    margin-left: 25px;
+}
+
+#grid li {	
+    float: left;
+	width: 20%;
+	margin: 0 5% 5% 0;
+    list-style-type: none;
+	}
+.container{
+    position:relative;
+    color: white;
+    width:150px;
+    padding-bottom:100%
+}
+.container:hover{color:orange}
+.title{
+    position:absolute;
+    bottom: 0px;
+    padding: 5px;
+}
+.image{
+    position:absolute;
+    top:0;left:0;
+    width: 100%; height:100%;
+}
+.price{
+    background-color: white;
+    position:absolute;
+    top:0;right:0;
+    padding:5px 8px;
+    border-bottom-left-radius: 5px;
+    color: orange;
+    text-align:center;
+    font-weight:600;
+    font-size:18px;
+}
+
+#categories li {	
+	font-size: 18px;
+    text-align: center;
+    list-style-type: none;
+    color: black;
+    cursor: pointer;
+    padding: 5px;
+}
+#categories li:hover{color:white;}
+#categories li.active {background-color: orange; color:white;}

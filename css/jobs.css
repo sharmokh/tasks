@@ -1,0 +1,235 @@
+*{
+    margin: 0px;
+    padding: 0px;
+    font-family: sans-serif;
+    font-size: 12px;
+}
+#login {
+    position: relative;
+    top: -45px;
+    left: 600px;
+    width: 375px;
+}
+#login input[type="text"] {
+    font-size: 12px;
+    width: 150px;
+    margin: 3px;
+}
+#login input[type="password"] {
+    font-size: 12px;
+    width: 100px;
+    margin: 3px;
+}
+#login input[type="submit"] {
+    background-color: #ffce74;
+    border: 1px solid white;
+    font-size: 12px;
+    margin: 3px;
+}
+#login input[type="submit"]:hover {
+    background-color: orange;
+}
+
+/*Sign In HTML*/
+#jobs {
+    position: relative;
+    overflow: hidden;
+    right: 100px;
+    height: 550px;
+    width: 400px;
+    text-align: center; 
+    background: white;
+}
+
+#jobs p {
+    font-size: 18px;
+     -moz-transition:  opacity 0.5s ease-out; 
+       -o-transition: opacity 0.5s ease-out; 
+  -webkit-transition: opacity 0.5s ease-out; 
+      -ms-transition: opacity 0.5s ease-out; 
+    
+    -webkit-animation: moveSlideshow 10s linear infinite;
+    -moz-animation:    moveSlideshow 10s linear infinite;
+}
+
+@-webkit-keyframes moveSlideshow {
+    0% { margin-top: 0px; }
+    100% { margin-top: -550px; }
+}
+
+@-moz-keyframes moveSlideshow {
+    0% { margin-top: 0px; }
+    100% { margin-top: -550px; }
+}
+.wrapper {
+    margin-left: auto;
+    margin-right: auto;
+    width: 1000px;
+}
+
+/*Sign Up HTML*/
+h2 {
+    margin: 50px 10px 10px 10px;
+    font-size: 30px;
+}
+input[type="text"], input[type="password"], input[type="date"], input[type="tel"], input[list="sex"] {
+    background-color: white;
+    border: 1px solid #E2E2E2;
+    font-size: 18px;
+    padding: 5px;
+    width: 400px;
+    border-radius: 10px;
+    margin: 10px;
+    outline: none;
+}
+#signup input[type="submit"] {
+    font-size: 18px;
+    margin: 10px 10px 10px 125px;
+}
+input[type="submit"] {
+    background-color: orange;
+    border: 1px solid gray;
+    color: white;
+    padding: 3px;
+    border-radius: 10px;
+}
+.error{
+    display: none;
+	margin-left: 10px;
+}
+.error_show{
+    color: red;
+	margin-left: 10px;
+}
+input.invalid {
+    border: 2px solid red;
+}
+input.valid {
+    border: 2px solid green;
+}
+input[id="first_name"], input[id="last_name"]{
+    width: 183px;
+}
+#pw_req {
+    color: gray;
+    font-size: 9px;
+    margin-left: 25px;
+}
+
+/*Profile HTML*/
+.col1{
+    float: left;
+    width: 35%;
+}
+.crop {
+    margin: 50px;
+    width: 250px;
+    height: 350px;
+    border: 3px solid black;
+    border-radius: 5px;
+}
+.col2{
+    float: right;
+    width: 60%;
+}
+input[list="sex"]{
+    width: 125px;
+}
+input[id="dob"]{
+    width: 215px;
+}
+input[id="city"]{
+    width: 148px;
+}
+input[id="state"]{
+    width: 40px;
+}
+input[id="zip_code"]{
+    width: 50px;
+}
+.verified {
+    width: 30px;
+    height: auto;
+    margin: 10px;
+}
+#profile input[id="submit"] {
+    font-size: 18px;
+    margin: 10px;
+    float: right;
+}
+.hide {
+    display: none;
+}
+
+/*Account HTML*/
+.tab {
+    background-color: #ffce74;
+    height: 100%;
+}
+.tab a {
+    color: black;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: bolder;
+    background-color: #ffce74;
+    display: block;
+    width: inherit;
+    text-align: center;
+    padding: 12px;
+}
+.tab a:hover {
+    background-color: orange;
+}
+#invoice #info{
+    border-collapse: collapse;
+    border: 1px black solid;
+    float: right;
+}
+#invoice #info td{
+    border: 1px black solid;
+    padding: 4px;
+}
+.shade {
+    background-color: #d1d1d1;
+}
+h4 {
+    font-size: 20px;
+}
+#work input[type="text"] {
+    width: 50px;
+}
+#invoice #work{
+    border-collapse: collapse;
+    border: 1px black solid;
+    margin-top: 100px;
+}
+#invoice #work td{
+    border: 1px black solid;
+    height: 40px;
+}
+#supplies {
+    background-color: white;
+    border: 1px solid #E2E2E2;
+    font-size: 18px;
+    padding: 5px;
+    width: 315px;
+    height: 100px;
+    resize: none;
+    border-radius: 10px;
+    margin: 10px;
+    outline: none;
+}
+#invoice input[type="submit"] {
+    font-size: 18px;
+    margin-top: 5px;
+    float: right;
+}
+#invoice #work .no_border {
+    border: none;
+}
+#invoice #work th{
+    border: 1px black solid;
+    font-weight: bold;
+    font-size: 14px;
+    height: 30px;
+}

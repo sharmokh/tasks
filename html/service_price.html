@@ -1,0 +1,66 @@
+<head>
+    <link type="text/css" rel="stylesheet" href="/css/services.css" />
+</head>
+
+{% extends "logged.html" %}
+{% block content %}
+
+<div class="wrapper">
+    <div class="col1">
+        <div><img class="crop" src="/img?img_id={{user.key.urlsafe()}}" alt="Profile Picture"></div>
+        <div id="r2" class="rate_widget">
+            Rating: {{user.handy_rating.average}} out of {{user.handy_rating.number}} clients<br>
+            <div class="star_1 ratings_stars"></div>
+            <div class="star_2 ratings_stars"></div>
+            <div class="star_3 ratings_stars"></div>
+            <div class="star_4 ratings_stars"></div>
+            <div class="star_5 ratings_stars"></div>
+            
+        </div>
+    </div>
+    <div class="col2">
+        <h2>Set Your Prices!</h2>
+        <form enctype="multipart/form-data" id="prices" method="post">
+        {% for item in services %}
+            <div class="row" name='id' value='{{item.key.id()}}'>
+                <div class="photo_col">
+                    <img class="photo" src="/img?img_id={{item.key.urlsafe()}}">
+                    <input type="file" id="photo" name="photo" accept="image/*"><br><br>
+                    You could upload a photo or go with the default above.
+                </div>
+                <div class="price_col">
+                    <h3>{{item.title}}</h3>
+                    Price: <input type="text" id="price" name="price" placeholder="Example: $49.95">
+                    <input type="radio" name="per" value="Service">Per Service
+                    <input type="radio" name="per" value="Hour">Per Hour<br>
+                    <input type="checkbox"> Lisenced: <input type="text" name="lisence_number" id="price" placeholder="{{user.lisence}}"><br> 
+                    You could edit the discription of the service or use the default below.<br>
+                    <textarea name="discription">{{item.discription}}</textarea><br>
+                </div>
+            </div>
+        {% endfor %}
+        <input type="submit" id="submit" value=" Set Price ">
+    </div>
+</div>
+    
+<script>
+    $(function(){
+        $('#price').on('input', function() {
+            var input=$(this);
+            var is_name=input.val();
+			if(is_name){input.removeClass("invalid").addClass("valid");}
+			else{input.removeClass("valid").addClass("invalid");}
+        });
+        $("#prices").submit(function(){
+            var form_data=$('#prices').serializeArray();
+            var error_free=true;
+			if (!error_free){
+			   event.preventDefault(); 
+			}
+			else{
+                document.getElementById("#prices").submit();
+            }
+        });
+    });
+</script> 
+{% endblock %}

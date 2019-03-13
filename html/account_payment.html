@@ -1,0 +1,20 @@
+<head>
+    <link type="text/css" rel="stylesheet" href="/css/account.css" />
+</head>
+
+{% extends "logged.html" %}
+{% block content %}
+
+<div class="wrapper">
+    <div class=col1>
+        <img class="crop" src="{{photo}}" alt="Profile Picture">
+        <div class="tab">
+            <a href="/account">Receipts</a>
+            <a href="/payment" class="active">Payment Methods</a>
+            <a href="/payout">Payout Preferences</a>
+            <a href="/security">Security</a>
+        </div>
+    </div>
+</div>
+        
+{% endblock %}

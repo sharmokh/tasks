@@ -1,0 +1,71 @@
+<head>
+    <link type="text/css" rel="stylesheet" href="/css/dashboard.css" />
+</head>
+
+{% extends "logged.html" %}
+{% block content %}
+
+        <div class="wrapper">
+            <div class="col1">
+                <div><a href="/provided">{{services}} Services Provided</a></div>
+                <ol id="categories">
+                    <li class="active">All Categories</li>
+                    <li>General Handyman</li>
+                    <li>Plumbing</li>
+                    <li>Electrical</li>
+                    <li>Heating & Cooling</li>
+                    <li>Appliances</li>
+                    <li>Yardwork</li>
+                    <li>Winter Services</li>
+                    <li>Car Services</li>
+                    <li>Computer Services</li>
+                    <li>Errands</li>
+                    <li>Maid Services</li>
+                    <li>Moving Services</li>
+                    <li>Pet Services</li>
+                    <li>Nanny Services</li>
+                </ol>
+            </div>
+            <div class="col2">
+                <form id="search" method="post">
+                    <div class="directions">Select the services below that you can provide.  Then click on your toolbox to set your price.</div>
+                    <div class="toolbox"><a href="/price">
+                        <img alt="Toolbox" class="tools" src="../img/Toolbox.png">
+                        <span id="count"></span>
+                    </a></div>
+                    <ol id="grid">
+                        {% for t in tazks %}
+                            {{t.render() | safe}}
+                        {% endfor %}
+                    </ol>
+                </form>
+            </div>
+        </div>
+                        
+        <script>    
+            $(function(){
+                $('#categories li').click(function() {
+                    var category = $(this).html();
+                    $('#categories li').removeClass('active');
+                    $(this).addClass('active');
+                    $('ol#grid li').hide();
+                    $('ol#grid li').each(function(){
+                        if ($(this).hasClass(category)){
+                            $(this).fadeIn(1200);};
+                    });
+                    if (category == 'All Categories') {
+                        $('ol#grid li').fadeIn(1200);};
+                });
+                tools = []
+                $('ol#grid li').click(function(e) {
+                    e.preventDefault();
+                    var tool = $(this).find('a').attr('href').split('=');
+                    if ($.inArray(tool[1], tools) == -1){
+                        tools.push(tool[1]);
+                        $('#count').html(tools.length);
+                        $('.toolbox a').attr('href', '/price?items='+tools)
+                        }
+                    });
+            });
+        </script>
+{% endblock %}

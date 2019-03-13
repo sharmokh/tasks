@@ -1,0 +1,57 @@
+<head>
+    <link type="text/css" rel="stylesheet" href="/css/dashboard.css" />
+</head>
+
+{% extends base %}
+{% block content %}
+
+        <div class="wrapper full">
+            <div class="col1 full">
+                <ol id="categories">
+                    <li class="active">All Categories</li>
+                    <li>General Handyman</li>
+                    <li>Plumbing</li>
+                    <li>Electrical</li>
+                    <li>Heating & Cooling</li>
+                    <li>Appliances</li>
+                    <li>Yardwork</li>
+                    <li>Winter Services</li>
+                    <li>Car Services</li>
+                    <li>Computer Services</li>
+                    <li>Errands</li>
+                    <li>Maid Services</li>
+                    <li>Moving Services</li>
+                    <li>Pet Services</li>
+                    <li>Nanny Services</li>
+                </ol>
+            </div>
+            <div class="col2 full">
+                <form id="search" method="post">
+                    <input type="text" name="search" value="{{search}}" placeholder="What service are you looking for?">
+                    <input type="submit" name="submit" value="  Search  ">
+                    <ol id="grid">
+                        {% for t in tazks %}
+                            {{t.render() | safe}}
+                        {% endfor %}
+                    </ol>
+                </form>
+            </div>
+        </div>
+                        
+        <script>    
+            $(function(){
+                $('#categories li').click(function() {
+                    var category = $(this).html();
+                    $('#categories li').removeClass('active');
+                    $(this).addClass('active');
+                    $('ol#grid li').hide();
+                    $('ol#grid li').each(function(){
+                        if ($(this).hasClass(category)){
+                            $(this).fadeIn(1200);};
+                    });
+                    if (category == 'All Categories') {
+                        $('ol#grid li').fadeIn(1200);};
+                });
+            });
+        </script>
+{% endblock %}

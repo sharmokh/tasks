@@ -1,0 +1,46 @@
+.shade {background-color: #d1d1d1;}
+input[id="submit"] {float: right;}
+#invoice #info{
+    border-collapse: collapse;
+    border: 1px black solid;
+    float: right;
+}
+#invoice #info td{
+    border: 1px black solid;
+    padding: 4px;
+}
+#work input[type="text"] {width: 50px;}
+#invoice #work{
+    border-collapse: collapse;
+    border: 1px black solid;
+    margin-top: 100px;
+}
+#invoice #work td{
+    border: 1px black solid;
+    height: 40px;
+}
+#supplies {
+    background-color: white;
+    border: 1px solid #E2E2E2;
+    font-size: 18px;
+    padding: 5px;
+    width: 260px;
+    height: 125px;
+    resize: none;
+    border-radius: 10px;
+    margin: 10px;
+    outline: none;
+}
+#invoice #work .no_border {border: none;}
+#invoice #work th{
+    border: 1px black solid;
+    font-weight: bold;
+    font-size: 14px;
+    height: 30px;
+}
+.box {
+    margin: 25px 45px 25px 0; 
+    padding: 25px; 
+    width: 550px; 
+    background-color: #E2E2E2;
+}

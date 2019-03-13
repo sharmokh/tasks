@@ -1,0 +1,119 @@
+    <head>
+        <link type="text/css" rel="stylesheet" href="/css/account.css" />
+    </head>
+
+{% extends "logged.html" %}
+{% block content %}
+
+        <div class="wrapper">
+            <div class=col1>
+                <img class="crop" src="{{photo}}" alt="Profile Picture">
+                <div class="tab">
+                    <a href="/account" class="active">Receipts</a>
+                    <a href="/payment">Payment Methods</a>
+                    <a href="/payout">Payout Preferences</a>
+                    <a href="/security">Security</a>
+                </div>
+            </div>
+            <div class="col2">
+            <form id=invoice class="box" method=post>
+                <h2>Current Invoice</h2>
+                <hr><br>
+                <table id=info>
+                    <col class=shade width="100">
+                    <col width="200">
+                    <tr>
+                        <td>Invoice Number</td>
+                        <td placeholder="Invoice Number">{{invoice_number}}</td>
+                    </tr>
+                    <tr>
+                        <td>Client</td>
+                        <td placeholder="Client Full Name">{{client}}</td>
+                    </tr>
+                    <tr>
+                        <td>Adddress</td>
+                        <td placeholder="Street, City, State">{{address}}</td>
+                    </tr>
+                    <tr>
+                        <td>Date</td>
+                        <td placeholder="Month Day, Year">{{completed}}</td>
+                    </tr>
+                </table>
+                <table>
+                    <tr><h3>Handy Man</h3></tr>
+                    <tr>{{Handyman}}</tr>
+                </table>
+                <table id=work>
+                    <col width="325">
+                    <col span=2 width="75">
+                    <col class=shade widht="100">
+                    <tr>
+                        <th>Discription</th>
+                        <th>Quantity</th>
+                        <th>Rate</th>
+                        <th>Cost</th>
+                    </tr>
+                    <tr>
+                        <td>{{discription}}</td>
+                        <td><input type=text id=hours name=hours placeholder=hours value={{hours}}></td>
+                        <td><input type=text id=rate name=rate readonly value=${{rate}}></td>
+                        <td><input type=text id=labor name=labor readonly value={{labor}}></td>
+                    </tr>
+                    <tr>
+                        <td><textarea id=supplies name=supplies placeholder="Supplies..." value={{supplies}}></textarea></td>
+                        <td></td>
+                        <td></td>
+                        <td><input type=text id=supplies name=supplies value={{supplies}}></td> 
+                    </tr>
+                    <tr>
+                        <td class="no_border"></td>
+                        <td class="no_border"></td>
+                        <td></td>
+                        <td>{{cost}}</td>
+                    </tr>
+                    <tr>
+                        <td class="no_border"></td>
+                        <td class="no_border"></td>
+                        <td>Tax Rate</td>
+                        <td>{{tax_rate}}</td>
+                    </tr>
+                    <tr>
+                        <td class="no_border"></td>
+                        <td class="no_border"></td>
+                        <td>Tip</td>
+                        <td><input type=text id=tip name=tip value={{tip}}></td>
+                    </tr>
+                    <tr>
+                        <td class="no_border"></td>
+                        <td class="no_border"></td>
+                        <td>Total</td>
+                        <td>{{total_cost}}</td>
+                    </tr>
+                </table>
+                <input type="submit" id="submit" value=" Approve/Submit ">
+                <br><br>
+            </form>
+            <div>
+                <h2>Previous Receipts</h2>
+                <table id=work>
+                    <col span=2 width="75">
+                    <col width="400">
+                    <col class=shade widht="100">
+                    <tr>
+                        <th>Invoice No.</th>
+                        <th>Date</th>
+                        <th>Discription</th>
+                        <th>Total Cost</th>
+                    </tr>
+                    <tr>
+                        <td>{{invoice_number}}</td>
+                        <td>{{date_completed}}</td>
+                        <td>{{discription}}</td>
+                        <td>{{total_cost}}</td>
+                    </tr>
+                </table>
+            </div>
+            </div>
+        </div>
+        
+{% endblock %}
