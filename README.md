@@ -1,4 +1,4 @@
-# [Tazks] (Handy-service.appspot.com)
+# [Tazks](http://handy-service.appspot.com)
 Tazks : Handyman Service Website
 
 Considering the growing power of social apps such as Airbnb and Uber, this site is intended to support individuals with the ability to provide small services such as fixing a leaky facut or setting up a printer.
